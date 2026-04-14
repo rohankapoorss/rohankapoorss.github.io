@@ -8,7 +8,7 @@
       var params = new URLSearchParams(window.location.search);
       var phone = params.get('phone');
       if (phone) {
-        window.location.replace('https://api.whatsapp.com/send/?' + encodeURIComponent(phone));
+        window.location.replace('https://wa.me/' + encodeURIComponent(phone));
       } else {
         document.addEventListener('DOMContentLoaded', function () {
           document.getElementById('error').style.display = 'block';
