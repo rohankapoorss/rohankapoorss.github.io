@@ -1,0 +1,31 @@
+export default {                                          
+    async fetch(request) {                                                                                              
+      const html = `<!DOCTYPE html>                         
+  <html lang="en">                                                                                                      
+  <head>
+    <meta charset="UTF-8">                                                                                              
+    <title>Redirecting…</title>                             
+    <script>                                                                                                            
+      (function () {
+        var params = new URLSearchParams(window.location.search);                                                       
+        var phone = params.get('phone');                    
+        if (phone) {                                                                                                    
+          window.location.replace('https://wa.me/' + encodeURIComponent(phone));
+        } else {                                                                                                        
+          document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('error').style.display = 'block';                                                   
+          });                                                                                                           
+        }                                                                                                               
+      })();                                                                                                             
+    </script>                                               
+  </head>                                                                                                               
+  <body>
+    <p id="error" style="display:none;">Missing <code>phone</code> parameter. Use <code>?phone=1234567890</code></p>    
+  </body>                                                                                                               
+  </html>`;
+                                                                                                                        
+      return new Response(html, {                           
+        headers: { 'Content-Type': 'text/html' },
+      });
+    },
+  };
